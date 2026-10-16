@@ -67,7 +67,7 @@ All commands assume `COCO_ROOT`, `ADE20K_ROOT` and `OUT` are set.
 | Boundary-jitter check | `OUT_SUFFIX=jitter_rot1 bash scripts/run_coco_panel.sh gray --jitter_deg 1 --jitter_seed 42` |
 | ADE20K replication | `bash scripts/run_ade20k_panel.sh` |
 | Recovery curves, stratified panel | `python scripts/fig_panel.py --results $OUT/kap --out_dir figs` |
-| Teaser, protocol, adapter figures | `scripts/fig_teaser.py`, `scripts/fig_protocol.py`, `scripts/fig_adapter.py` |
+| Protocol and adapter figures | `scripts/fig_protocol.py`, `scripts/fig_adapter.py` |
 | Adapter training | `bash scripts/run_adapters.sh` |
 | Adapter table (COCO val2017) | `ADAPTERS=$OUT/adapters bash scripts/run_val_adapters.sh`, then `python scripts/make_tables.py --results $OUT/kap --tables lora` |
 
@@ -110,7 +110,10 @@ adapter's own descriptor on SigLIP2-L and EVA-02-MIM.
 
 Pass an adapter to any evaluation with `--adapter DIR`.
 
-Trained adapters (ViT-L, SigLIP2-L, EVA-02-MIM): link to be added.
+Trained adapters (ViT-L, SigLIP2-L, EVA-02-MIM):
+[huggingface.co/bmeivar/kap-aperture-lora](https://huggingface.co/bmeivar/kap-aperture-lora).
+Download with `huggingface-cli download bmeivar/kap-aperture-lora --local-dir adapters`
+and use `ADAPTERS=adapters`.
 
 ## Instance-level evaluations
 
@@ -140,11 +143,6 @@ Values this code gives for ViT-L (mean pooling):
 | ILIAS R@1 | 71.5 | 61.8 |
 | ILIAS mAP | 61.5 | 51.2 |
 | Cut-paste R@1 (natural / gray / cut-paste) | 93.0 / 83.9 / 58.9 | |
-
-These differ slightly from the paper because two evaluation bugs in our
-original scripts are fixed here: INSTRE positives were shifted by one index,
-and the ILIAS query image stayed in its own ranking (it lowered mAP by about
-15 points but did not change R@1). The conclusions are unchanged.
 
 ## Citation
 
