@@ -1,0 +1,43 @@
+# The ten backbones of the paper's panel (timm model tags pinned).
+# input_size: square input resolution used for the region index and the sweep.
+# precision: inference precision (DINOv3 runs in bf16).
+dinov2_g:
+  timm_model: vit_giant_patch14_dinov2.lvd142m
+  input_size: 518
+  precision: fp16
+dinov3_l:
+  timm_model: vit_large_patch16_dinov3.lvd1689m
+  input_size: 256
+  precision: bf16
+siglip2_512:
+  timm_model: vit_so400m_patch16_siglip_512.v2_webli
+  input_size: 512
+  precision: fp16
+siglip2_l:
+  timm_model: vit_large_patch16_siglip_384.v2_webli
+  input_size: 384
+  precision: fp16
+eva02_clip:
+  timm_model: eva02_large_patch14_clip_224.merged2b
+  input_size: 224
+  precision: fp16
+eva02_mim:
+  timm_model: eva02_large_patch14_224.mim_in22k
+  input_size: 224
+  precision: fp16
+mae_l:
+  timm_model: vit_large_patch16_224.mae
+  input_size: 224
+  precision: fp16
+vit_l:
+  timm_model: vit_large_patch16_384.augreg_in21k_ft_in1k
+  input_size: 384
+  precision: fp16
+convnext_l:
+  timm_model: convnext_large.fb_in22k_ft_in1k_384
+  input_size: 384
+  precision: fp16
+dino_s8:
+  timm_model: vit_small_patch8_224.dino
+  input_size: 224
+  precision: fp16

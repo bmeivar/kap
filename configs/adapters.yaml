@@ -1,0 +1,23 @@
+# Aperture-conditioned LoRA: per-backbone settings. Keys are backbone names from
+# configs/backbones.yaml (which supplies the timm model).
+#
+# descriptor: the global descriptor the InfoNCE loss acts on
+#   cls        - token 0 of forward_features (the CLS token)
+#   pre_logits - forward_head(forward_features(x), pre_logits=True), i.e. the
+#                model's native pooling (SigLIP2: attention pool, EVA-02 MIM: mean)
+# target_modules: LoRA target layers (EVA-02 has split q/k/v projections)
+# bf16_autocast / grad_checkpointing: memory savers used for DINOv2-G only
+vit_l:
+  descriptor: cls
+  target_modules: [qkv]
+siglip2_l:
+  descriptor: pre_logits
+  target_modules: [qkv]
+eva02_mim:
+  descriptor: pre_logits
+  target_modules: [q_proj, k_proj, v_proj]
+dinov2_g:
+  descriptor: cls
+  target_modules: [qkv]
+  bf16_autocast: true
+  grad_checkpointing: true

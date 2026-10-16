@@ -1,0 +1,12 @@
+# Display names and paradigms of the ten-backbone panel, keyed as in backbones.yaml.
+# Table and figure scripts read runs from <results>/<key>_<fill>/ (see README).
+dinov2_g:    {name: DINOv2-G/14,   paradigm: SSL}
+convnext_l:  {name: ConvNeXt-L,    paradigm: Sup}
+dinov3_l:    {name: DINOv3-L,      paradigm: SSL}
+vit_l:       {name: ViT-L,         paradigm: Sup}
+mae_l:       {name: MAE ViT-L,     paradigm: MIM}
+siglip2_512: {name: SigLIP2-512,   paradigm: V-L}
+siglip2_l:   {name: SigLIP2-L,     paradigm: V-L}
+eva02_clip:  {name: EVA-02-L CLIP, paradigm: V-L}
+dino_s8:     {name: DINO ViT-S/8,  paradigm: SSL}
+eva02_mim:   {name: EVA-02-L MIM,  paradigm: MIM}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kap"
+version = "1.0.0"
+description = "Keyhole Aperture Probe: a counterfactual diagnostic for context removal in object retrieval"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.1", "torchvision", "timm>=1.0.20", "peft>=0.10", "faiss-cpu", "numpy",
+  "scipy", "Pillow", "PyYAML", "scikit-learn", "matplotlib", "tqdm",
+]
+
+[project.optional-dependencies]
+sam3 = ["transformers>=5.0"]
+
+[tool.setuptools.packages.find]
+include = ["kap*"]
+
+[tool.setuptools.package-data]
+kap = ["data/*.csv"]
