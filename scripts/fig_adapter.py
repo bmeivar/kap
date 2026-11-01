@@ -145,7 +145,7 @@ def make_figure(image, obj_mask, d_teacher, d_student, output):
     place_image(teacher_x0, teacher_y0, img_teacher, COL_TEACHER,
                "Teacher view: ", r"$d_{\mathrm{teacher}}\sim U(20,250)$px")
     place_image(student_x0, student_y0, img_student, COL_STUDENT,
-               "Student view: ", r"$d_{\mathrm{student}}\sim U(0,200)$px")
+               "Student view: ", r"$d_{\mathrm{student}}\sim U(0,\min(200,d_{\mathrm{teacher}}{-}10))$px")
 
     # ── "same image" dashed note card, centered in the gap between
     # the student label and the teacher panel ──────────────────
@@ -156,7 +156,7 @@ def make_figure(image, obj_mask, d_teacher, d_student, output):
     draw_box(ax, teacher_x0, note_y0, img_w, note_h, fc="white", ec="#999999",
              lw=1.3, ls=(0, (5, 3)))
     ax.text(teacher_x0 + img_w / 2, note_y0 + note_h / 2,
-            "same image, resampled so that\n"
+            "same image, student range capped so that\n"
             r"$d_{\mathrm{teacher}} - d_{\mathrm{student}} \geq 10$ px",
             ha="center", va="center", fontsize=11.5, fontstyle="italic",
             color="#333333")
