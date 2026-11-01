@@ -93,6 +93,8 @@ at the reported precision.
 
 ## Aperture-conditioned LoRA
 
+![Aperture distillation: a frozen backbone with LoRA toggled off (teacher, wide aperture) and on (student, tight aperture); InfoNCE pulls the student's descriptor toward the teacher's.](assets/adapter_schematic.png)
+
 ```bash
 python -m kap.adapter.train --backbone vit_l --coco_root $COCO_ROOT --out_dir $OUT/adapters/vit_l
 python -m kap.adapter.controls --kind matched --backbone vit_l --coco_root $COCO_ROOT --out_dir $OUT/controls/matched/vit_l
