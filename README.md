@@ -3,6 +3,8 @@
 Code for **"Object-Only Is Not Context-Free: A Counterfactual Diagnostic for
 Context Removal in Object Retrieval"** (Boaz Meivar, Shai Avidan; WACV 2027).
 
+![Aperture distillation: a frozen backbone with LoRA toggled off (teacher, wide aperture) and on (student, tight aperture); InfoNCE pulls the student's descriptor toward the teacher's.](assets/adapter_schematic.png)
+
 KAP measures how much a mask-pooled object descriptor depends on the scene
 around the object. Each query object is encoded at several *apertures*: the
 object mask dilated by `d` pixels with everything outside filled (`d = 0` is
@@ -92,8 +94,6 @@ differ from ours in the last digits; rankings and table values are unaffected
 at the reported precision.
 
 ## Aperture-conditioned LoRA
-
-![Aperture distillation: a frozen backbone with LoRA toggled off (teacher, wide aperture) and on (student, tight aperture); InfoNCE pulls the student's descriptor toward the teacher's.](assets/adapter_schematic.png)
 
 ```bash
 python -m kap.adapter.train --backbone vit_l --coco_root $COCO_ROOT --out_dir $OUT/adapters/vit_l
