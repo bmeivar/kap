@@ -55,11 +55,14 @@ at 1024-D). The sweep then writes to `--out_dir`:
 size, precision). Any timm model works with `--timm_model NAME --input_size N`.
 Useful flags: `--fill {gray,zero,blur,shuffle}`, `--dilations`,
 `--feather_px` (soft aperture edge), `--jitter_px / --jitter_deg` (imperfect
-query masks), `--adapter DIR` (PEFT LoRA), `--queries IMG:INST ...`.
+query masks), `--adapter DIR` (PEFT LoRA), `--queries IMG:INST ...`,
+`--query_file FILE` (one of the lists in `queries/`).
 
 ## Reproducing the paper
 
 All commands assume `COCO_ROOT`, `ADE20K_ROOT` and `OUT` are set.
+
+The exact query lists of every paper run are in [`queries/`](queries/README.md).
 
 | paper item | command |
 |---|---|

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 from pathlib import Path
 
@@ -49,6 +50,8 @@ def parse_args(argv=None):
     s.add_argument("--max_queries", type=int, default=5600)
     s.add_argument("--queries", nargs="+", metavar="IMAGE_ID:INSTANCE_ID",
                    help="evaluate only these gallery objects (e.g. for figures)")
+    s.add_argument("--query_file", type=Path,
+                   help="TSV with image_id and instance_id columns (e.g. queries/coco_train2017/vit_l.tsv)")
     s.add_argument("--min_images_per_cat", type=int, default=2)
     s.add_argument("--k", type=int, default=100)
     s.add_argument("--feather_px", type=int, default=0, help="soft aperture edge (alpha-feather check)")
@@ -94,8 +97,11 @@ def main(argv=None):
     object_meta, _ = load_object_meta(args.index_dir)
     search_index = open_search_index(args.index_dir)
 
-    if args.queries:
-        wanted = {tuple(int(x) for x in q.split(":")) for q in args.queries}
+    if args.queries or args.query_file:
+        wanted = {tuple(int(x) for x in q.split(":")) for q in args.queries or []}
+        if args.query_file:
+            with open(args.query_file) as f:
+                wanted |= {(int(r["image_id"]), int(r["instance_id"])) for r in csv.DictReader(f, delimiter="\t")}
         rows = [i for i, m in enumerate(object_meta) if (m["image_id"], m["instance_id"]) in wanted]
         queries = queries_from_objects(object_meta, rows)
     else:
