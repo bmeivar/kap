@@ -70,6 +70,7 @@ The exact query lists of every paper run are in [`queries/`](queries/README.md).
 | Fill-operator checks (zero, blur, shuffle) | `bash scripts/run_coco_panel.sh blur` (and `shuffle`, `zero`) |
 | Alpha-feather check | `OUT_SUFFIX=feather2 bash scripts/run_coco_panel.sh gray --feather_px 2` |
 | Boundary-jitter check | `OUT_SUFFIX=jitter_rot1 bash scripts/run_coco_panel.sh gray --jitter_deg 1 --jitter_seed 42` |
+| Matched Base-scale grid (ConvNeXt-B 56.2 vs. ViT-B 48.9) | `bash scripts/run_matched_grid.sh` |
 | ADE20K replication | `bash scripts/run_ade20k_panel.sh` |
 | Recovery curves, stratified panel | `python scripts/fig_panel.py --results $OUT/kap --out_dir figs` |
 | Protocol and adapter figures | `scripts/fig_protocol.py`, `scripts/fig_adapter.py` |
